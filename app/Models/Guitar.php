@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guitar extends Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -30,7 +32,6 @@ class Guitar extends Model
         return $this->belongsTo(BodyType::class);
     }
 
-    use HasFactory;
 
 
 }

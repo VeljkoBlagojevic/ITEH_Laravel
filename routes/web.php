@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BodyTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
