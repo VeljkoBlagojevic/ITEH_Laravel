@@ -10,6 +10,13 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'city',
+        'CEO',
+    ];
 
     // public function guitars()
     // {

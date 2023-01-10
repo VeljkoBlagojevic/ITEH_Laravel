@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GuitarCollection;
 use App\Models\Guitar;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,6 @@ class BodyTypeGuitarController extends Controller
         if(is_null($guitars)) {
             return response()->json('Data not found', 404);
         }
-        return $guitars;
+        return new GuitarCollection($guitars);
     }
 }

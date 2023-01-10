@@ -3,6 +3,8 @@
 use App\Http\Controllers\BodyTypeController;
 use App\Http\Controllers\BodyTypeGuitarController;
 use App\Http\Controllers\GuitarController;
+use App\Http\Controllers\ManufacturerController;
+use App\Models\BodyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,10 +27,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('guitars', [GuitarController::class, 'index']);
 // Route::get('guitars/{id}', [GuitarController::class, 'show']);
 
-Route::resource('guitars', GuitarController::class);
+Route::resource('guitars', GuitarController::class)->only(['index', 'show', 'destroy']);
 
-Route::get('/bodyTypes', [BodyTypeController::class, 'index']);
-Route::get('/bodyTypes/{id}', [BodyTypeController::class, 'show']);
+// Route::get('/bodyTypes', [BodyTypeController::class, 'index']);
+// Route::get('/bodyTypes/{id}', [BodyTypeController::class, 'show']);
+
+// Route::post('/bodyTypes', [BodyTypeController::class, 'store']);
+
+Route::resource('bodyTypes', BodyTypeController::class)->except('create', 'edit');
+
+Route::resource('manufacturers', ManufacturerController::class)->except('create', 'edit');
 
 // Route::get('bodyTypes/{id}/guitars', [BodyTypeGuitarController::class, 'index'])->name('bodyTypes.guitars.index');
 

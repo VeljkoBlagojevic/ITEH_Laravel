@@ -9,6 +9,14 @@ class BodyType extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'number_of_strings',
+        'is_electric',
+        'orientation'
+    ];
 
     // public function guitars()
     // {

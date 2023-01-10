@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BodyTypeResource extends JsonResource
+class ManufacturerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,11 +19,10 @@ class BodyTypeResource extends JsonResource
         return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,
-            'number_of_strings' => $this->resource->number_of_strings,
-            'is_electric' => $this->resource->is_electric,
-            'orientation' => $this->resource->orientation,
+            'city' => $this->resource->city,
+            'CEO' => $this->resource->CEO,
         ];
     }
 
-    public static $wrap = 'body_type';
+    public static $wrap = 'manufacturer';
 }

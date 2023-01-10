@@ -6,9 +6,14 @@ use App\Http\Resources\GuitarCollection;
 use App\Http\Resources\GuitarResource;
 use App\Models\Guitar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class GuitarController extends Controller
 {
+    //GET
+    //localhost:8000/api/guitars
+    //NO BODY
+
     /**
      * Display a listing of the resource.
      *
@@ -20,69 +25,41 @@ class GuitarController extends Controller
         return new GuitarCollection(Guitar::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    //GET
+    //localhost:8000/api/guitars/{guitarID}
+    //NO BODY
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guitar  $guitar
+     * @param  integer  $guitarID
      * @return \Illuminate\Http\Response
      */
-    public function show(Guitar $guitar)
+    public function show($guitarID)
     {
-        return new GuitarResource($guitar);
+        $guitar = Guitar::find($guitarID);
+        return is_null($guitar) ? response()->json('Data not found', 404) : new GuitarResource($guitar);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Guitar  $guitar
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Guitar $guitar)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Guitar  $guitar
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Guitar $guitar)
-    {
-        //
-    }
+    //DELETE
+    //localhost:8000/api/guitars/{guitarID}
+    //NO BODY
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guitar  $guitar
+     * @param  integer  $guitarID
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guitar $guitar)
+    public function destroy($guitarID)
     {
-        //
+        $guitar = Guitar::where('id', $guitarID)->delete();
+        return response()->json([
+            "success" => true,
+            "message" => "Guitar deleted successfully.",
+            "data" => $guitar
+        ]);
     }
 }
