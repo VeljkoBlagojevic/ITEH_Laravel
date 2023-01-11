@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\GuitarCollection;
 use App\Http\Resources\GuitarResource;
 use App\Models\Guitar;
+use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,6 @@ class GuitarController extends Controller
         // return GuitarResource::collection(Guitar::all());
         return new GuitarCollection(Guitar::all());
     }
-
 
     //GET
     //localhost:8000/api/guitars/{guitarID}
