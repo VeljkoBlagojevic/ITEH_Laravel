@@ -46,13 +46,15 @@ class DatabaseSeeder extends Seeder
                 "name" => "Les Paul",
                 "number_of_strings" => 6,
                 "is_electric" => true,
-                "orientation" => "right-handed"
+                "orientation" => "right-handed",
+                "scale_length" => 24.75
             ],
             [
                 "name" => "SG",
                 "number_of_strings" => 6,
                 "is_electric" => true,
-                "orientation" => "right-handed"
+                "orientation" => "right-handed",
+                "scale_length" => 25.5
             ]
         ]);
 

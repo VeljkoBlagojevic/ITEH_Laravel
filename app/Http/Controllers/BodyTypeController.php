@@ -90,6 +90,7 @@ class BodyTypeController extends Controller
             'number_of_strings' => 'required|integer',
             'is_electric' => 'required|boolean',
             'orientation' => 'required|string|max:255',
+            'scale_length' => 'required|string|max:255'
         ]);
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
@@ -98,6 +99,7 @@ class BodyTypeController extends Controller
         $bodyType->number_of_strings = $input['number_of_strings'];
         $bodyType->is_electric = $input['is_electric'];
         $bodyType->orientation = $input['orientation'];
+        $bodyType->scale_length = $input['scale_length'];
         $bodyType->save();
         return response()->json([
             "success" => true,

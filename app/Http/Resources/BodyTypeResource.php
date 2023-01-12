@@ -22,6 +22,7 @@ class BodyTypeResource extends JsonResource
             'number_of_strings' => $this->resource->number_of_strings,
             'is_electric' => $this->resource->is_electric,
             'orientation' => $this->resource->orientation,
+            'scale_length' => $this->resource->scale_length
         ];
     }
 

@@ -15,7 +15,8 @@ class BodyType extends Model
         'name',
         'number_of_strings',
         'is_electric',
-        'orientation'
+        'orientation',
+        'scale_length'
     ];
 
     // public function guitars()
