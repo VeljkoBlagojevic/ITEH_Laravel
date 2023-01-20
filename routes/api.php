@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return auth()->user();
     });
     Route::resource('manufacturers', ManufacturerController::class)->only(['update', 'store', 'destroy']);
-    Route::resource('bodyTypes', BodyTypeController::class)->only(['update', 'store', 'destroy']);
+    Route::resource('bodyTypes', BodyTypeController::class)->only(['store', 'destroy']);
     Route::resource('guitars', GuitarController::class)->only(['destroy']);
 
     Route::post('/logout', [AuthController::class, 'logout']);

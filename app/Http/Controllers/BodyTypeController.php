@@ -70,45 +70,6 @@ class BodyTypeController extends Controller
     }
 
 
-    //PUT/PATCH
-    //localhost:8000/api/bodyTypes/{bodyTypeID}
-    //BODY = BodyType Model
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BodyType  $bodyType
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BodyType $bodyType)
-    {
-        //
-        $input = $request->all();
-        $validator = Validator::make($input, [
-            'name' => 'required|string',
-            'number_of_strings' => 'required|integer',
-            'is_electric' => 'required|boolean',
-            'orientation' => 'required|string|max:255',
-            'scale_length' => 'required|string|max:255'
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-        $bodyType->name = $input['name'];
-        $bodyType->number_of_strings = $input['number_of_strings'];
-        $bodyType->is_electric = $input['is_electric'];
-        $bodyType->orientation = $input['orientation'];
-        $bodyType->scale_length = $input['scale_length'];
-        $bodyType->save();
-        return response()->json([
-            "success" => true,
-            "message" => "Body Type updated successfully.",
-            "data" => $bodyType
-        ]);
-    }
-
-
     //DELETE
     //localhost:8000/api/bodyTypes/{bodyTypeID}
     //NO BODY
